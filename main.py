@@ -13,7 +13,7 @@ class Root(AnchorLayout):
         sys.stdout = StringIO()
 
     def python_execute(self, command):
-        eval(command)
+        eval('print({})'.format(command))
         self.ids.output.text = sys.stdout.getvalue()
 
     def terminal_execute(self, command):
