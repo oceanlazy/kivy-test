@@ -1,0 +1,30 @@
+<Root>:
+    anchor_y: 'top'
+    BoxLayout:
+        orientation: 'vertical'
+
+        BoxLayout:
+            size_hint_y: .2
+            TextInput:
+                id: python
+                hint_text: 'Python'
+            Button:
+                text: 'Run python'
+                size_hint_x: .5
+
+                on_press: root.python_execute(root.ids.python.text)
+
+        BoxLayout:
+            size_hint_y: .2
+            TextInput:
+                id: terminal
+                hint_text: 'Terminal'
+            Button:
+                text: 'Run terminal'
+                on_press: root.terminal_execute(root.ids.terminal.text)
+                size_hint_x: .5
+
+        Label:
+            id: output
+            text: 'Output'
+            halign: 'center'
