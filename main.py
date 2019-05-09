@@ -11,6 +11,7 @@ class Root(AnchorLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         sys.stdout = StringIO()
+        self.ids.output.bind(size=self.ids.output.setter('text_size'))  # todo move to kv
 
     def python_execute(self, command):
         try:
