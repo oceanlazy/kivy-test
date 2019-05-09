@@ -13,8 +13,11 @@ class Root(AnchorLayout):
         sys.stdout = StringIO()
 
     def python_execute(self, command):
-        eval('print({})'.format(command))
-        self.ids.output.text = sys.stdout.getvalue()
+        try:
+            eval('print({})'.format(command))
+            self.ids.output.text = sys.stdout.getvalue()
+        except Exception as e:
+            self.ids.output.text = str(e)
 
     def terminal_execute(self, command):
         process = subprocess.Popen(command.split(), stdin=subprocess.PIPE, stdout=subprocess.PIPE)
