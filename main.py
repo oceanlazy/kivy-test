@@ -24,7 +24,7 @@ class Root(AnchorLayout):
         try:
             process = subprocess.Popen(command.split(), stdin=subprocess.PIPE, stdout=subprocess.PIPE)
             stdout, stderr = process.communicate()
-            self.ids.output.text = 'STDOUT:\n{}\n\nSTDERR:\n{}'.format(stdout, stderr)
+            self.ids.output.text = 'STDOUT:\n{}\n\nSTDERR:\n{}'.format(stdout.decode(), stderr.decode())
         except Exception as e:
             self.ids.output.text = str(e)
 
