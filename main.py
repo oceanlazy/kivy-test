@@ -21,9 +21,12 @@ class Root(AnchorLayout):
             self.ids.output.text = str(e)
 
     def terminal_execute(self, command):
-        process = subprocess.Popen(command.split(), stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-        stdout, stderr = process.communicate()
-        self.ids.output.text = 'STDOUT:\n{}\n\nSTDERR:\n{}'.format(stdout, stderr)
+        try:
+            process = subprocess.Popen(command.split(), stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+            stdout, stderr = process.communicate()
+            self.ids.output.text = 'STDOUT:\n{}\n\nSTDERR:\n{}'.format(stdout, stderr)
+        except Exception as e:
+            self.ids.output.text = str(e)
 
 
 class TestKivyAPKApp(App):
